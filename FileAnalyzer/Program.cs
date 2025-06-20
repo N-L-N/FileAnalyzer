@@ -10,13 +10,15 @@ Console.WriteLine($"Количество слов: {analyzer.GetNumberWords()}")
 
 Console.WriteLine($"Количество уникальных слов: {analyzer.GetNumberUniqueWords()}");
 
-Console.WriteLine("Топ 5 слов:");
+Console.WriteLine("Топ 5 повторяющихся слов:");
 foreach (var wordFreq in analyzer.GetTop5Words())
 {
     Console.WriteLine($"{wordFreq.Word}: {wordFreq.Count}");
 }
 
-Console.WriteLine($"Длина самого длинного слова: {analyzer.GetNumberLargestWord()}");
+string word = analyzer.GetLargestWord().word;
+int number = analyzer.GetLargestWord().number;
+Console.WriteLine($"Длина самого длинного слова: {number}, слово: {word}");
 
 Console.WriteLine($"Количество строк в файле: {analyzer.GetNumberLines()}");
 

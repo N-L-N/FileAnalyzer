@@ -54,10 +54,14 @@ namespace FileAnalyzer
             return words;
         }
 
-        public int GetNumberLargestWord()
+        public(int number, string word) GetLargestWord()
         {
             var words = _content.Split(new[] { ' ', '\n', '\r', ',', '.' }, StringSplitOptions.RemoveEmptyEntries);
-            return words.Select(word => word.Length).DefaultIfEmpty(0).Max();
+            int number = words.Select(word => word.Length).DefaultIfEmpty(0).Max();
+
+            string word = words.FirstOrDefault(w => w.Length == number) ?? string.Empty;
+
+            return (number, word);
         }
 
         public int GetNumberLines()
